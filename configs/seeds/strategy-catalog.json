@@ -1,0 +1,1448 @@
+{
+  "schema_version": "2.0",
+  "catalog_id": "iterinject-strategies-v2-bundled",
+  "created_at": "2026-10-09",
+  "scope": "strategy metadata and bundled asset references",
+  "payload_text_included": false,
+  "identity_rule": "exact_strategy_id",
+  "body_equivalence_verified": false,
+  "counts": {
+    "strategies": 27,
+    "baselines": 1,
+    "shared_strategy_ids": 15,
+    "source_variants_including_baseline": 43,
+    "claude_target_bound_payloads": 270
+  },
+  "sources": {
+    "injecagent": {
+      "path": "strategies/native_wrappers.py",
+      "sha256": "2f0f597d93772a243025191db48d1299395429bc85245a9ae27eb070ab1fae1d",
+      "origin": {
+        "path": "src/optimization/disguise_adapter.py",
+        "sha256": "594116bdf4c39efa03b4a16757ba6d8e5a5951d563603e765edfa4a2bbf3cc64",
+        "first_commit": "8d7e09a16471ffef74aece2bffe255a496fefef1",
+        "author": "JacksonChen",
+        "kind": "local_research_addition",
+        "source_license_declared": false
+      }
+    },
+    "claude": {
+      "path": "strategies/claude_definitions.py",
+      "sha256": "037a03f1ef06585f246d0f5c9d434f5b56e37f8b41d013af49b2cb885c9d1044",
+      "origin": {
+        "path": "agent_safe_clean/config.py",
+        "sha256": "8c61db6e5d29261611310cf2e63b4df293c806f8cc2f2aae05ad3aaeff872609",
+        "first_commit": "8d7e09a16471ffef74aece2bffe255a496fefef1",
+        "author": "JacksonChen",
+        "kind": "local_research_addition",
+        "source_license_declared": false
+      }
+    },
+    "generated_payloads": {
+      "path": "strategies/target_bound_payloads.py",
+      "sha256": "6efb27f6f0ed2a6182f2b9a8f8b4f76cef9d4d1f9e1a3fa10477ccf7fcd4226a",
+      "origin": {
+        "path": "agent_safe_clean/initial_payloads_generated.py",
+        "sha256": "5cfb2af0a04ed78c712fab3668e92fa408ca6d386eaaae7366f745a977e8d38b",
+        "first_commit": "8d7e09a16471ffef74aece2bffe255a496fefef1",
+        "author": "JacksonChen",
+        "kind": "local_research_addition",
+        "source_license_declared": false
+      }
+    }
+  },
+  "baseline": {
+    "strategy_id": "plain",
+    "display_name": "Plain baseline",
+    "kind": "baseline",
+    "variants": [
+      {
+        "variant_id": "injecagent:plain",
+        "source": "injecagent",
+        "source_ref": {
+          "path": "strategies/native_wrappers.py",
+          "symbol": "DISGUISE_ADAPTERS",
+          "entry_key": "plain",
+          "origin_path": "src/optimization/disguise_adapter.py",
+          "origin_line": 157
+        },
+        "initializer_ref": {
+          "path": "strategies/native_wrappers.py",
+          "symbol": "_wrap_plain",
+          "wrapper_symbol": "_wrap_plain",
+          "input": "case_attacker_instruction",
+          "origin_path": "src/optimization/disguise_adapter.py",
+          "origin_symbol": "wrap_instruction"
+        }
+      }
+    ]
+  },
+  "strategies": [
+    {
+      "strategy_id": "system_reminder",
+      "display_name": "系统指令伪装",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "claude:system_reminder",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D01_SYSTEM_REMINDER",
+            "entry_key": "system_reminder",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 141
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "system_reminder",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "config_field",
+      "display_name": "配置字段伪装",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "claude:config_field",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D02_CONFIG_FIELD",
+            "entry_key": "config_field",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 150
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "config_field",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "comment",
+      "display_name": "注释伪装",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "claude:comment",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D03_COMMENT",
+            "entry_key": "comment",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 159
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "comment",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "data_content",
+      "display_name": "数据内容伪装",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "claude:data_content",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D04_DATA_CONTENT",
+            "entry_key": "data_content",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 168
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "data_content",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "scripted_message",
+      "display_name": "脚本化响应",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "injecagent:scripted_message",
+          "source": "injecagent",
+          "source_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "DISGUISE_ADAPTERS",
+            "entry_key": "scripted_message",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_line": 165
+          },
+          "initializer_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "_wrap_scripted_message",
+            "wrapper_symbol": "_wrap_scripted_message",
+            "input": "case_attacker_instruction",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_symbol": "wrap_instruction"
+          }
+        },
+        {
+          "variant_id": "claude:scripted_message",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D05_SCRIPTED_MESSAGE",
+            "entry_key": "scripted_message",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 177
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "scripted_message",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "fake_tool_call",
+      "display_name": "伪造工具调用",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "injecagent:fake_tool_call",
+          "source": "injecagent",
+          "source_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "DISGUISE_ADAPTERS",
+            "entry_key": "fake_tool_call",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_line": 172
+          },
+          "initializer_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "_wrap_fake_tool_call",
+            "wrapper_symbol": "_wrap_fake_tool_call",
+            "input": "case_attacker_instruction",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_symbol": "wrap_instruction"
+          }
+        },
+        {
+          "variant_id": "claude:fake_tool_call",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D06_FAKE_TOOL_CALL",
+            "entry_key": "fake_tool_call",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 186
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "fake_tool_call",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "simulation_frame",
+      "display_name": "模拟场景框架",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "injecagent:simulation_frame",
+          "source": "injecagent",
+          "source_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "DISGUISE_ADAPTERS",
+            "entry_key": "simulation_frame",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_line": 179
+          },
+          "initializer_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "_wrap_simulation_frame",
+            "wrapper_symbol": "_wrap_simulation_frame",
+            "input": "case_attacker_instruction",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_symbol": "wrap_instruction"
+          }
+        },
+        {
+          "variant_id": "claude:simulation_frame",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D07_SIMULATION_FRAME",
+            "entry_key": "simulation_frame",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 195
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "simulation_frame",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "fake_conversation",
+      "display_name": "伪造对话历史",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "injecagent:fake_conversation",
+          "source": "injecagent",
+          "source_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "DISGUISE_ADAPTERS",
+            "entry_key": "fake_conversation",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_line": 186
+          },
+          "initializer_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "_wrap_fake_conversation",
+            "wrapper_symbol": "_wrap_fake_conversation",
+            "input": "case_attacker_instruction",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_symbol": "wrap_instruction"
+          }
+        },
+        {
+          "variant_id": "claude:fake_conversation",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D08_FAKE_CONVERSATION",
+            "entry_key": "fake_conversation",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 204
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "fake_conversation",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "chain_commands",
+      "display_name": "链接命令",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "claude:chain_commands",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D09_CHAIN_COMMANDS",
+            "entry_key": "chain_commands",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 213
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "chain_commands",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "forge_output",
+      "display_name": "伪造输出",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "injecagent:forge_output",
+          "source": "injecagent",
+          "source_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "DISGUISE_ADAPTERS",
+            "entry_key": "forge_output",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_line": 193
+          },
+          "initializer_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "_wrap_forge_output",
+            "wrapper_symbol": "_wrap_forge_output",
+            "input": "case_attacker_instruction",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_symbol": "wrap_instruction"
+          }
+        },
+        {
+          "variant_id": "claude:forge_output",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D10_FORGE_OUTPUT",
+            "entry_key": "forge_output",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 222
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "forge_output",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "fake_error",
+      "display_name": "伪造错误状态",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "injecagent:fake_error",
+          "source": "injecagent",
+          "source_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "DISGUISE_ADAPTERS",
+            "entry_key": "fake_error",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_line": 200
+          },
+          "initializer_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "_wrap_fake_error",
+            "wrapper_symbol": "_wrap_fake_error",
+            "input": "case_attacker_instruction",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_symbol": "wrap_instruction"
+          }
+        },
+        {
+          "variant_id": "claude:fake_error",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D11_FAKE_ERROR",
+            "entry_key": "fake_error",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 231
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "fake_error",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "fake_system_prompt",
+      "display_name": "伪造系统提示",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "injecagent:fake_system_prompt",
+          "source": "injecagent",
+          "source_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "DISGUISE_ADAPTERS",
+            "entry_key": "fake_system_prompt",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_line": 207
+          },
+          "initializer_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "_wrap_fake_system_prompt",
+            "wrapper_symbol": "_wrap_fake_system_prompt",
+            "input": "case_attacker_instruction",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_symbol": "wrap_instruction"
+          }
+        },
+        {
+          "variant_id": "claude:fake_system_prompt",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D12_FAKE_SYSTEM_PROMPT",
+            "entry_key": "fake_system_prompt",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 240
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "fake_system_prompt",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "repetition",
+      "display_name": "重复指令",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "claude:repetition",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D13_REPETITION",
+            "entry_key": "repetition",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 249
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "repetition",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "valid_justification",
+      "display_name": "合法理由",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "injecagent:valid_justification",
+          "source": "injecagent",
+          "source_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "DISGUISE_ADAPTERS",
+            "entry_key": "valid_justification",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_line": 214
+          },
+          "initializer_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "_wrap_valid_justification",
+            "wrapper_symbol": "_wrap_valid_justification",
+            "input": "case_attacker_instruction",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_symbol": "wrap_instruction"
+          }
+        },
+        {
+          "variant_id": "claude:valid_justification",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D14_VALID_JUSTIFICATION",
+            "entry_key": "valid_justification",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 258
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "valid_justification",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "social_proof",
+      "display_name": "社会认同",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "injecagent:social_proof",
+          "source": "injecagent",
+          "source_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "DISGUISE_ADAPTERS",
+            "entry_key": "social_proof",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_line": 221
+          },
+          "initializer_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "_wrap_social_proof",
+            "wrapper_symbol": "_wrap_social_proof",
+            "input": "case_attacker_instruction",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_symbol": "wrap_instruction"
+          }
+        },
+        {
+          "variant_id": "claude:social_proof",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D15_SOCIAL_PROOF",
+            "entry_key": "social_proof",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 267
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "social_proof",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "encode_obfuscate",
+      "display_name": "编码混淆",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "claude:encode_obfuscate",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D16_ENCODE_OBFUSCATE",
+            "entry_key": "encode_obfuscate",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 276
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "encode_obfuscate",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "override_rules",
+      "display_name": "覆盖规则",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "injecagent:override_rules",
+          "source": "injecagent",
+          "source_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "DISGUISE_ADAPTERS",
+            "entry_key": "override_rules",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_line": 229
+          },
+          "initializer_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "_wrap_override_rules",
+            "wrapper_symbol": "_wrap_override_rules",
+            "input": "case_attacker_instruction",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_symbol": "wrap_instruction"
+          }
+        },
+        {
+          "variant_id": "claude:override_rules",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D17_OVERRIDE_RULES",
+            "entry_key": "override_rules",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 285
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "override_rules",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "embed_legitimate",
+      "display_name": "嵌入合法内容",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "injecagent:embed_legitimate",
+          "source": "injecagent",
+          "source_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "DISGUISE_ADAPTERS",
+            "entry_key": "embed_legitimate",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_line": 236
+          },
+          "initializer_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "_wrap_embed_legitimate",
+            "wrapper_symbol": "_wrap_embed_legitimate",
+            "input": "case_attacker_instruction",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_symbol": "wrap_instruction"
+          }
+        },
+        {
+          "variant_id": "claude:embed_legitimate",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D18_EMBED_LEGITIMATE",
+            "entry_key": "embed_legitimate",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 294
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "embed_legitimate",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "impersonate",
+      "display_name": "冒充权威",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "injecagent:impersonate",
+          "source": "injecagent",
+          "source_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "DISGUISE_ADAPTERS",
+            "entry_key": "impersonate",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_line": 243
+          },
+          "initializer_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "_wrap_impersonate",
+            "wrapper_symbol": "_wrap_impersonate",
+            "input": "case_attacker_instruction",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_symbol": "wrap_instruction"
+          }
+        },
+        {
+          "variant_id": "claude:impersonate",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D19_IMPERSONATE",
+            "entry_key": "impersonate",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 303
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "impersonate",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "overwrite_persona",
+      "display_name": "覆盖人格",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "claude:overwrite_persona",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D20_OVERWRITE_PERSONA",
+            "entry_key": "overwrite_persona",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 312
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "overwrite_persona",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "urgency",
+      "display_name": "紧急声称",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "injecagent:urgency",
+          "source": "injecagent",
+          "source_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "DISGUISE_ADAPTERS",
+            "entry_key": "urgency",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_line": 250
+          },
+          "initializer_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "_wrap_urgency",
+            "wrapper_symbol": "_wrap_urgency",
+            "input": "case_attacker_instruction",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_symbol": "wrap_instruction"
+          }
+        },
+        {
+          "variant_id": "claude:urgency",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D21_URGENCY",
+            "entry_key": "urgency",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 321
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "urgency",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "conditional_trigger",
+      "display_name": "条件触发",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "claude:conditional_trigger",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D22_CONDITIONAL_TRIGGER",
+            "entry_key": "conditional_trigger",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 330
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "conditional_trigger",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "necessary_prerequisite",
+      "display_name": "必要前置条件",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "injecagent:necessary_prerequisite",
+          "source": "injecagent",
+          "source_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "DISGUISE_ADAPTERS",
+            "entry_key": "necessary_prerequisite",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_line": 257
+          },
+          "initializer_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "_wrap_necessary_prerequisite",
+            "wrapper_symbol": "_wrap_necessary_prerequisite",
+            "input": "case_attacker_instruction",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_symbol": "wrap_instruction"
+          }
+        },
+        {
+          "variant_id": "claude:necessary_prerequisite",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D23_NECESSARY_PREREQUISITE",
+            "entry_key": "necessary_prerequisite",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 339
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "necessary_prerequisite",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "silent_execution",
+      "display_name": "静默执行",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "injecagent:silent_execution",
+          "source": "injecagent",
+          "source_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "DISGUISE_ADAPTERS",
+            "entry_key": "silent_execution",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_line": 264
+          },
+          "initializer_ref": {
+            "path": "strategies/native_wrappers.py",
+            "symbol": "_wrap_silent_execution",
+            "wrapper_symbol": "_wrap_silent_execution",
+            "input": "case_attacker_instruction",
+            "origin_path": "src/optimization/disguise_adapter.py",
+            "origin_symbol": "wrap_instruction"
+          }
+        },
+        {
+          "variant_id": "claude:silent_execution",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D24_SILENT_EXECUTION",
+            "entry_key": "silent_execution",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 348
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "silent_execution",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "redefine_words",
+      "display_name": "重定义词语",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "claude:redefine_words",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D25_REDEFINE_WORDS",
+            "entry_key": "redefine_words",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 357
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "redefine_words",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "multilingual",
+      "display_name": "多语言混合",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "claude:multilingual",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D26_MULTILINGUAL",
+            "entry_key": "multilingual",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 366
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "multilingual",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    },
+    {
+      "strategy_id": "emotional",
+      "display_name": "情感操纵",
+      "kind": "strategy",
+      "variants": [
+        {
+          "variant_id": "claude:emotional",
+          "source": "claude",
+          "source_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "enum_member": "D27_EMOTIONAL",
+            "entry_key": "emotional",
+            "origin_path": "agent_safe_clean/config.py",
+            "origin_line": 375
+          },
+          "initializer_ref": {
+            "path": "strategies/claude_definitions.py",
+            "symbol": "DISGUISE_TEMPLATES",
+            "origin_path": "agent_safe_clean/injection_agent.py",
+            "origin_symbol": "InjectionAgent.get_initial_payload",
+            "origin_line": 138,
+            "origin_lookup_order": [
+              "generated_payloads",
+              "manual_initial_payloads",
+              "model_generation"
+            ],
+            "origin_generated_lookup_condition": "USE_GENERATED_PAYLOADS"
+          },
+          "generated_payload_ref": {
+            "path": "strategies/target_bound_payloads.py",
+            "symbol": "GENERATED_PAYLOADS",
+            "strategy_key": "emotional",
+            "target_bound": true,
+            "target_count": 10,
+            "origin_path": "agent_safe_clean/initial_payloads_generated.py"
+          }
+        }
+      ]
+    }
+  ],
+  "asset_root": "iterinject.assets"
+}

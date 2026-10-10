@@ -1,0 +1,143 @@
+{
+  "run_id": "seed-search-v1",
+  "status": "configured",
+  "scope_id": "injecagent:dh:base:seed-search",
+  "max_api_requests": 100,
+  "seed_bindings": [
+    {
+      "seed_id": "init-0001",
+      "variant_id": "claude:system_reminder",
+      "initializer_kind": "strategy_generation"
+    },
+    {
+      "seed_id": "init-0002",
+      "variant_id": "claude:config_field",
+      "initializer_kind": "strategy_generation"
+    },
+    {
+      "seed_id": "init-0003",
+      "variant_id": "claude:comment",
+      "initializer_kind": "strategy_generation"
+    },
+    {
+      "seed_id": "init-0004",
+      "variant_id": "claude:data_content",
+      "initializer_kind": "strategy_generation"
+    },
+    {
+      "seed_id": "init-0005",
+      "variant_id": "injecagent:scripted_message",
+      "initializer_kind": "native_wrapper"
+    },
+    {
+      "seed_id": "init-0006",
+      "variant_id": "injecagent:fake_tool_call",
+      "initializer_kind": "native_wrapper"
+    },
+    {
+      "seed_id": "init-0007",
+      "variant_id": "injecagent:simulation_frame",
+      "initializer_kind": "native_wrapper"
+    },
+    {
+      "seed_id": "init-0008",
+      "variant_id": "injecagent:fake_conversation",
+      "initializer_kind": "native_wrapper"
+    },
+    {
+      "seed_id": "init-0009",
+      "variant_id": "claude:chain_commands",
+      "initializer_kind": "strategy_generation"
+    },
+    {
+      "seed_id": "init-0010",
+      "variant_id": "injecagent:forge_output",
+      "initializer_kind": "native_wrapper"
+    },
+    {
+      "seed_id": "init-0011",
+      "variant_id": "injecagent:fake_error",
+      "initializer_kind": "native_wrapper"
+    },
+    {
+      "seed_id": "init-0012",
+      "variant_id": "injecagent:fake_system_prompt",
+      "initializer_kind": "native_wrapper"
+    },
+    {
+      "seed_id": "init-0013",
+      "variant_id": "claude:repetition",
+      "initializer_kind": "strategy_generation"
+    },
+    {
+      "seed_id": "init-0014",
+      "variant_id": "injecagent:valid_justification",
+      "initializer_kind": "native_wrapper"
+    },
+    {
+      "seed_id": "init-0015",
+      "variant_id": "injecagent:social_proof",
+      "initializer_kind": "native_wrapper"
+    },
+    {
+      "seed_id": "init-0016",
+      "variant_id": "claude:encode_obfuscate",
+      "initializer_kind": "strategy_generation"
+    },
+    {
+      "seed_id": "init-0017",
+      "variant_id": "injecagent:override_rules",
+      "initializer_kind": "native_wrapper"
+    },
+    {
+      "seed_id": "init-0018",
+      "variant_id": "injecagent:embed_legitimate",
+      "initializer_kind": "native_wrapper"
+    },
+    {
+      "seed_id": "init-0019",
+      "variant_id": "injecagent:impersonate",
+      "initializer_kind": "native_wrapper"
+    },
+    {
+      "seed_id": "init-0020",
+      "variant_id": "claude:overwrite_persona",
+      "initializer_kind": "strategy_generation"
+    },
+    {
+      "seed_id": "init-0021",
+      "variant_id": "injecagent:urgency",
+      "initializer_kind": "native_wrapper"
+    },
+    {
+      "seed_id": "init-0022",
+      "variant_id": "claude:conditional_trigger",
+      "initializer_kind": "strategy_generation"
+    },
+    {
+      "seed_id": "init-0023",
+      "variant_id": "injecagent:necessary_prerequisite",
+      "initializer_kind": "native_wrapper"
+    },
+    {
+      "seed_id": "init-0024",
+      "variant_id": "injecagent:silent_execution",
+      "initializer_kind": "native_wrapper"
+    },
+    {
+      "seed_id": "init-0025",
+      "variant_id": "claude:redefine_words",
+      "initializer_kind": "strategy_generation"
+    },
+    {
+      "seed_id": "init-0026",
+      "variant_id": "claude:multilingual",
+      "initializer_kind": "strategy_generation"
+    },
+    {
+      "seed_id": "init-0027",
+      "variant_id": "claude:emotional",
+      "initializer_kind": "strategy_generation"
+    }
+  ]
+}

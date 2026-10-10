@@ -1,0 +1,55 @@
+{
+  "schema_version": "iterinject-assets-v1",
+  "created_at": "2026-10-09",
+  "original_catalog_sha256": "b0beb38ff9c53e1cf9882927e9961c0f74979f82ab834423b7ce6647b7cfbc71",
+  "counts": {
+    "native_wrappers_including_plain": 16,
+    "claude_strategy_definitions": 27,
+    "target_bound_payloads": 270
+  },
+  "assets": {
+    "injecagent": {
+      "path": "strategies/native_wrappers.py",
+      "sha256": "2f0f597d93772a243025191db48d1299395429bc85245a9ae27eb070ab1fae1d",
+      "bytes": 9636,
+      "origin": {
+        "path": "src/optimization/disguise_adapter.py",
+        "sha256": "594116bdf4c39efa03b4a16757ba6d8e5a5951d563603e765edfa4a2bbf3cc64",
+        "first_commit": "8d7e09a16471ffef74aece2bffe255a496fefef1",
+        "author": "JacksonChen",
+        "kind": "local_research_addition",
+        "source_license_declared": false
+      },
+      "ast_fidelity": "exact_selected_nodes_without_location_attributes"
+    },
+    "claude": {
+      "path": "strategies/claude_definitions.py",
+      "sha256": "037a03f1ef06585f246d0f5c9d434f5b56e37f8b41d013af49b2cb885c9d1044",
+      "bytes": 18944,
+      "origin": {
+        "path": "agent_safe_clean/config.py",
+        "sha256": "8c61db6e5d29261611310cf2e63b4df293c806f8cc2f2aae05ad3aaeff872609",
+        "first_commit": "8d7e09a16471ffef74aece2bffe255a496fefef1",
+        "author": "JacksonChen",
+        "kind": "local_research_addition",
+        "source_license_declared": false
+      },
+      "ast_fidelity": "exact_selected_nodes_without_location_attributes"
+    },
+    "generated_payloads": {
+      "path": "strategies/target_bound_payloads.py",
+      "sha256": "6efb27f6f0ed2a6182f2b9a8f8b4f76cef9d4d1f9e1a3fa10477ccf7fcd4226a",
+      "bytes": 229203,
+      "origin": {
+        "path": "agent_safe_clean/initial_payloads_generated.py",
+        "sha256": "5cfb2af0a04ed78c712fab3668e92fa408ca6d386eaaae7366f745a977e8d38b",
+        "first_commit": "8d7e09a16471ffef74aece2bffe255a496fefef1",
+        "author": "JacksonChen",
+        "kind": "local_research_addition",
+        "source_license_declared": false
+      },
+      "ast_fidelity": "exact_selected_nodes_without_location_attributes"
+    }
+  },
+  "licensing_note": "Selected local strategy files contain no separate source license declaration. Preserve their provenance and distinguish this from the retained upstream MIT notice; no new source permission is inferred by extraction."
+}
