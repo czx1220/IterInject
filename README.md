@@ -1,9 +1,26 @@
-# IterInject AgentDojo Experiments
+# IterInject
 
-This repository contains the complete paper-facing AgentDojo experiment
-release for IterInject: the IterInject implementation, our AgentVigil
-replication, baseline evaluation, defense replay, result aggregation scripts,
-and experiment configuration.
+Official code release for **IterInject: Indirect Prompt Injection Against LLM
+Agents via Feedback-Guided Iterative Optimization**.
+
+**Findings of EMNLP 2026**
+
+[![arXiv](https://img.shields.io/badge/arXiv-2605.24659-b31b1b.svg)](https://arxiv.org/abs/2605.24659)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+
+**Zixuan Chen, Jiaxiang Chen, Li Luo, Ke Xu, Xiaoxiang Huang, Tanfeng Sun,
+Xinghao Jiang**<br>
+Shanghai Jiao Tong University · The University of Hong Kong
+
+[Paper (arXiv)](https://arxiv.org/abs/2605.24659) ·
+[PDF](https://arxiv.org/pdf/2605.24659) ·
+[OpenReview](https://openreview.net/forum?id=OBXkjB2JzD)
+
+## AgentDojo Experiments
+
+This repository contains the paper-facing AgentDojo experiment release: the
+IterInject implementation, our AgentVigil replication, baseline evaluation,
+defense replay, result aggregation scripts, and experiment configuration.
 
 The private research workspace also contained early provider-specific runners,
 smoke tests, failed reruns, and OpenClaw adaptation experiments. Their mapping
@@ -219,6 +236,20 @@ This repository contains indirect prompt-injection payloads for controlled
 security evaluation. Run them only against systems and accounts you are
 authorized to test. The included AgentDojo tasks use benchmark fixtures rather
 than real user accounts.
+
+## Citation
+
+```bibtex
+@misc{chen2026iterinject,
+  title = {IterInject: Indirect Prompt Injection Against LLM Agents via Feedback-Guided Iterative Optimization},
+  author = {Zixuan Chen and Jiaxiang Chen and Li Luo and Ke Xu and Xiaoxiang Huang and Tanfeng Sun and Xinghao Jiang},
+  year = {2026},
+  eprint = {2605.24659},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.LG},
+  url = {https://arxiv.org/abs/2605.24659}
+}
+```
 
 ## License
 
