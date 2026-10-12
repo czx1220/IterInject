@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "benchmark": {
+    "name": "AgentDojo",
+    "benchmark_version": "v1.2.2",
+    "python_package": "agentdojo==0.1.35",
+    "suites": {
+      "workspace": 140,
+      "banking": 130,
+      "travel": 75,
+      "slack": 165
+    },
+    "total_cases_per_model": 510
+  },
+  "shared_configuration": {
+    "victim_temperature": 0.0,
+    "mutation_model": "Qwen3-8B",
+    "mutation_temperature": 0.7,
+    "mutation_thinking_enabled": false,
+    "victim_thinking_modes": {
+      "GLM-5.1": "disabled",
+      "MiniMax-M2.7": "server_default",
+      "DeepSeek-V4-Flash": "disabled",
+      "Qwen3.5-27B": "disabled"
+    },
+    "max_iterations": 7,
+    "no_improvement_patience": 3,
+    "detected_patience_extension": 2,
+    "pipeline_mode": "openai-tools",
+    "stop_on_first_success": true,
+    "seed_bank": {
+      "initial_seed_count": 10,
+      "diagnostic_values": {
+        "SUCCESS": 3,
+        "PARTIAL": 2,
+        "DETECTED": 1,
+        "IGNORED": 0
+      },
+      "ranking": "descending cumulative mean diagnostic value across prior targets",
+      "batch_size_k": 3,
+      "synthesis_strategies": [
+        "splice",
+        "camouflage",
+        "format_shift",
+        "escalate",
+        "repeat"
+      ]
+    },
+    "baseline_attacks": [
+      "direct",
+      "ignore_previous",
+      "system_message",
+      "injecagent",
+      "important_instructions"
+    ],
+    "disguise_candidates": [
+      "system_reminder",
+      "direct_request",
+      "fake_error",
+      "data_content",
+      "config_field",
+      "silent_execution",
+      "comment",
+      "override_rules",
+      "encode_obfuscate",
+      "fake_system_prompt"
+    ]
+  },
+  "victim_runs": [
+    {"label": "GLM", "model": "GLM-5.1", "run_id": "qwen3_attack_glm5"},
+    {"label": "MiniMax", "model": "MiniMax-M2.7", "run_id": "qwen3_attack_minimax"},
+    {"label": "DeepSeek", "model": "DeepSeek-V4-Flash", "run_id": "qwen3_attack_deepseek"},
+    {"label": "Qwen", "model": "Qwen3.5-27B", "run_id": "qwen3_attack_qwen"}
+  ],
+  "methods": [
+    {
+      "name": "Benchmark",
+      "entrypoint": "scripts/run_agentdojo_stepwise.py",
+      "definition": "First payload evaluation for each selected AgentDojo case."
+    },
+    {
+      "name": "IterInject",
+      "entrypoint": "scripts/run_agentdojo_stepwise.py",
+      "definition": "Best observed result across the initial payload and iterative mutations."
+    },
+    {
+      "name": "AgentVigil",
+      "entrypoint": "python -m agentvigil.run",
+      "definition": "MCTS prompt-fuzzing baseline evaluated on the same task pairs."
+    }
+  ],
+  "defense_replay": {
+    "victim_model": "DeepSeek-V4-Flash",
+    "entrypoint": "scripts/run_agentdojo_defense_replay.py",
+    "defenses": [
+      "tool_filter",
+      "transformers_pi_detector",
+      "spotlighting_with_delimiting",
+      "repeat_user_prompt"
+    ]
+  },
+  "release_contents": {
+    "source_entrypoints": [
+      "scripts/run_agentdojo_stepwise.py",
+      "scripts/run_agentdojo_defense_replay.py",
+      "scripts/summarize_agentdojo_runs.py",
+      "agentvigil/run.py"
+    ],
+    "configuration": [
+      ".env.example",
+      "requirements.txt",
+      "experiments/manifest.json",
+      "experiments/agentdojo_cases.json"
+    ],
+    "tests": [
+      "tests/test_release_helpers.py",
+      "tests/test_release_integrity.py",
+      "tests/test_seed_bank.py"
+    ]
+  }
+}
