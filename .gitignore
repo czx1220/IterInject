@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+dist/
+
+# Credentials and local environment
+.env
+.env.*
+!.env.example
+
+# Generated experiment output
+**/experiments/
+**/results/
+**/logs/
+*.log
+
+# Local Claude Code state
+claudecode/.claude/
+
+# Editors and operating systems
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+node_modules/
