@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Environment
+.env
+.env.*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Experiments output
+experiments/
+results/
+*.log
+
+# Data (too large for repo)
+*.npz
+*.pt
+*.bin
+*.ckpt
+
+# Node
+node_modules/
